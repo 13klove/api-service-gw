@@ -18,6 +18,12 @@ repositories {
 extra["springCloudVersion"] = "2020.0.3"
 
 dependencies {
+    implementation("io.github.microutils:kotlin-logging-jvm:2.0.6")
+
+    implementation("io.jsonwebtoken:jjwt-api:0.11.2")
+    implementation("io.jsonwebtoken:jjwt-impl:0.11.2")
+    implementation("io.jsonwebtoken:jjwt-jackson:0.11.2")
+
     implementation("org.springframework.boot:spring-boot-starter-data-redis")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")

@@ -1,0 +1,38 @@
+spring:
+
+    application:
+        name: api-service-gw
+
+    profiles:
+        active: test
+
+    cloud:
+      gateway:
+          routes:
+          - id: user-service
+            uri: http://localhost:8081
+            predicates:
+                - Path=/user-se/users/login
+                - Method=POST
+            filters:
+                - RewritePath=/user-se/(?<segment>.*), /$\{segment}
+
+          - id: user-service
+            uri: http://localhost:8081
+            predicates:
+                - Path=/user-se/users
+                - Method=POST
+            filters:
+                - RewritePath=/user-se/(?<segment>.*), /$\{segment}
+
+          - id: user-service
+            uri: http://localhost:8081
+            predicates:
+                - Path=/user-se/**
+            filters:
+                - RewritePath=/user-se/(?<segment>.*), /$\{segment}
+                - TokenRevokeFilter
+
+
+secret:
+    key: foodRecommendfoodRecommendfoodRecommendfoodRecommendfoodRecommend
